@@ -1,0 +1,31 @@
+<div class="column is-one-third">
+  <h3 class="title is-4">Past Events</h3>
+  <% @attended_events.each do | event |%>
+    <article class='panel is-success'>
+      <p class="panel-heading"><%= event.name %></p>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p><strong>Host:</strong> @<%= event.creator.username %><br/> 
+              <p><strong>Location:</strong> <%= event.location %></p>
+              <p><strong>Date:</strong> 
+                <%= event.date.strftime("%B")[0,3] %>
+                <%= event.date.strftime("%d") %>,
+                <%= event.date.year %></p>
+            </div>
+              <nav class="level">
+                <div class="level-left is-mobile">
+                  <p><%= link_to 'View', event, class: 'button' %>&nbsp; &nbsp;</p>
+                   <%= link_to 'Unregister', destroy_attending_path(:attendee_id=>current_user.id, :attended_event_id=>event.id), 
+                              data: { turbo_method: "delete",
+                                      turbo_confirm: "Click OK to confirm unregistering from this event." }, 
+                                      class: 'button' %>
+                </div>
+              </nav>
+            </div>
+          </div>
+      </article>
+    </article>
+  <% end %>
+</div>

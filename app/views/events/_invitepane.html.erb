@@ -1,0 +1,42 @@
+    <div class="columns">
+      <div class="column is-full">
+        <article class="panel">
+          <p class="panel-heading">Send Invites</p>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <% User.all.order('username Asc').each do | user |%>
+                    <% unless user.id == current_user.id %>
+                      <div class="box invites">
+                        <div>
+                          <p><strong>@<%= user.username %></strong> - <%= user.email %></p>
+                        </div>
+                          <%# see Attending scope :confirmed %>
+                          <% if user.attendings.confirmed(@event.id).exists? %>
+                            <div>
+                              <p>Status: User attending</p>
+                            </div>
+                          <% elsif %>
+                          <%# see Invite scope :received %>
+                            <% user.invites.received(@event.id, user.id).exists? %>
+                              <%= link_to 'Cancel', event_destroy_invite_path(:event_id=> @event.id, :invitee_id=> user.id), 
+                                  data: { turbo_method: "delete" }, class: 'button cancel_inv' %>
+                              <div>
+                                <p>Status: Invite pending</p>
+                              </div>   
+                          <% else %>
+                              <%= link_to 'Invite', event_create_invite_path(:event_id => @event.id, :invitee_id=> user.id, :inviter_id=> current_user.id), 
+                                  data: { turbo_method: "post" }, class: 'button' %>
+                          <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </article>
+          </div>
+        </article>
+      </div>
+    </div>
+

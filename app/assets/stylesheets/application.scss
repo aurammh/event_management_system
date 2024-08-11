@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+
+ $input-placeholder-color: rgb(113, 107, 107);
+
+ @import 'bulma';
+
+ .navbar-brand .title, .navbar, .navbar-item {
+   color: white;
+   background-color: rgb(98, 196, 177);
+ }
+
+ .notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5em;
+ }
+
+ .is-3 {
+   margin-top: 16px;
+ }
+
+ input[type='checkbox'] {
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+
+.cancel {
+  margin-top: 2rem;
+}
+
+.button {
+  background-color: rgb(98, 196, 177);
+  color: white;
+}
+
+.cancel_inv {
+  background-color: rgb(229, 132, 29) !important;
+}
+
+.attending {
+  background-color: rgb(60, 225, 68);
+}
+
+.invites {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section{
+  min-height: 88vh;
+}
+.footer {
+  background-color: #535f53;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content a {
+  color: #ffcc00;
+  text-decoration: none;
+}

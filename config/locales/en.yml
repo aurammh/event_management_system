@@ -1,0 +1,5 @@
+en:
+  devise:
+    sessions:
+      user:
+        deactivated: "Your account has been deactivated. Please contact support."
